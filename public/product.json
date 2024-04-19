@@ -1,0 +1,38 @@
+[
+    {
+    "id":1,
+    "name": "Magnam Tiste",
+    "price": "800",
+    "image":"image/menu-item-1.png"
+},
+{
+    "id":2,
+    "name": "Aut Luia",
+    "price": 100,
+    "image":"image/menu-item-2.png"
+},
+{
+    "id":3,
+    "name": "Est Eligendi",
+    "price": 500,
+    "image":"image/menu-item-3.png"
+},
+{
+    "id":4,
+    "name": "Eos Luibusdam",
+    "price": 1000,
+    "image":"image/menu-item-4.png"
+},
+{
+    "id":5,
+    "name": "Eos Luibusdam",
+    "price": 400,
+    "image":"image/menu-item-5.png"
+},
+{
+    "id":6,
+    "name": "Laboriosam Direva",
+    "price": 300,
+    "image":"image/menu-item-6.png"
+}
+]

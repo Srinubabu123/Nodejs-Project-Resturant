@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment QR Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            border: 2px solid #4CAF50; /* Green border */
+            border-radius: 20px;
+            padding: 20px;
+            line-height: 50px;
+            background-color: #fff; /* White background */
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Box shadow */
+            transition: box-shadow 0.3s ease;
+             /* Smooth transition on hover */
+        }
+
+        .container:hover {
+            box-shadow: 0 12px 20px 0 rgba(8, 6, 6, 0.838); /* Larger shadow on hover */
+        }
+
+        #qr-code-img {
+            max-width: 80%;
+            height: auto;
+            border: 2px solid #4CAF50; /* Green border */
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Box shadow */
+            margin-bottom: 20px;
+        }
+
+        #qr-code-img:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+
+        h1, h2 {
+            color: #4CAF50; /* Green text */
+            margin: 0;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SCAN QR CODE</h1>
+        <h2>Payment</h2>
+        <img id="qr-code-img" src="" alt="QR Code">
+        <h2>Scan Me</h2>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the QR code URL from the query parameter
+            var urlParams = new URLSearchParams(window.location.search);
+            var qrCodeUrl = urlParams.get('qrCodeUrl');
+        
+            // Set the QR code URL as the source of the image
+            var qrCodeImg = document.getElementById("qr-code-img");
+            qrCodeImg.src = qrCodeUrl;
+
+            // Function to check if the image is loaded and display alert
+            function checkPayment() {
+                if (qrCodeImg.complete && qrCodeImg.naturalWidth !== 0) {
+                    alert("Payment Successful");
+                    // Redirect user after successful payment
+                    window.location.href = 'index.html';
+                }
+            }
+
+            // Check for payment every 6 seconds
+            setInterval(checkPayment, 6000);
+        });
+    </script>
+</body>
+</html>
