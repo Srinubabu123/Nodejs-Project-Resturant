@@ -240,7 +240,7 @@
                   <i class="icon bi bi-telephone flex-shrink-0"></i>
                   <div>
                     <h3>Call Us</h3>
-                    <p>+1 5589 55488 55</p>
+                    <p>+91 1234567890</p>
                   </div>
                 </div>
               </div><!-- End Info Item -->
@@ -279,7 +279,7 @@
                     <div>
                       <h4>Reservations</h4>
                       <p>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
+                        <strong>Phone:</strong> +91 1234567890<br>
                         <strong>Email:</strong> info@example.com<br>
                       </p>
                     </div>
@@ -347,6 +347,7 @@
             productsHTML += `
             <div class="product">
               <img src="${value.image}" width="300" height="300">
+              <p style="color:red">${value.name}</p>
               <p>Price: ${value.price}</p>
               <button class="place-order-btn btn-primary" data-name="${value.name}" data-price="${value.price}" data-image="${value.image}">Add Card</button>
             </div>`;

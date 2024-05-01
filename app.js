@@ -5,11 +5,10 @@ const { MongoClient } = require('mongodb');
 const session = require('express-session');
 const crypto = require('crypto');
 
-// Generate a secure random string for the session secret
 function generateRandomString(length) {
     return crypto.randomBytes(Math.ceil(length / 2))
-        .toString('hex') // convert to hexadecimal format
-        .slice(0, length); // return required number of characters
+        .toString('hex') 
+        .slice(0, length); 
 }
 
 const sessionSecret = generateRandomString(32);
@@ -17,7 +16,7 @@ const sessionSecret = generateRandomString(32);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
-    secret: sessionSecret, // Use the generated random string for the session secret
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: true
 }));
@@ -36,7 +35,7 @@ async function connectDB() {
 
 connectDB();
 
-app.listen(3000, () => {
+app.listen(4000, () => {
     console.log("Server is running on port 3000");
 });
 
@@ -86,20 +85,16 @@ app.post('/login', async (req, res) => {
         const user = await collection.findOne({ email });
 
         if (user && user.password === password) {
-            // Set session variables to indicate the user is logged in
             req.session.isLoggedIn = true;
             req.session.email = email;
             req.session.username = user.username;
 
-            // Redirect to index.html and pass username as query parameter
             res.redirect(`/index.html?username=${user.username}`);
         } else {
-            // Send appropriate error message for invalid credentials
             res.status(401).send("Invalid username or password");
         }
     } catch (error) {
         console.error("Error during login:", error);
-        // Send internal server error status code and message
         res.status(500).send("Internal Server Error");
     }
 });
